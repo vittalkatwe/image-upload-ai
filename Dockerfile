@@ -7,17 +7,17 @@ RUN apt-get update && \
     libvips-dev \
     && apt-get clean
 
-# Set the working directory in the container
-WORKDIR /app
+# Set the working directory in the container (inside the backend folder)
+WORKDIR /app/backend
 
 # Copy the current directory contents into the container at /app
 COPY . /app
 
 # Install the required Python packages
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
 # Expose the port the app runs on
 EXPOSE 8000
 
-# Run the FastAPI app using uvicorn
+# Run the FastAPI app using uvicorn (adjusted to use the backend folder)
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
