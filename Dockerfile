@@ -13,8 +13,8 @@ WORKDIR /app/backend
 # Copy the current directory contents into the container at /app
 COPY . /app
 
-# Install the required Python packages
-RUN pip install --no-cache-dir -r /app/requirements.txt
+# Install the required Python packages from backend folder
+RUN pip install --no-cache-dir -r /app/backend/requirements.txt
 
 # Expose the port the app runs on
 EXPOSE 8000
